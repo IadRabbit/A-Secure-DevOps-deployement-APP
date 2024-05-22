@@ -4,7 +4,7 @@ Write-UP [here](https://omniscient-leech-632.notion.site/ASDDA-an-EKS-CTF-556d8d
 
 
 > [!CAUTION]
-> Advises Setup this infrastructure has cost
+> Setup this infrastructure has cost
 
 - EKS alone cost 0.10$ per hour
 - EC2 t3.small per month cost around 0.0208$ per hour
