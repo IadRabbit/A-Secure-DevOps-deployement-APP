@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aws-cli2
+  labels:
+    app: aws-cli2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aws-cli
+  template:
+    metadata:
+      labels:
+        app: aws-cli
+    spec:
+      serviceAccountName: asdda-deployment-sa
+      containers:
+      - name: aws-cli
+        image: amazon/aws-cli
+        command: ["sleep", "infinity"] # Keeps the container running

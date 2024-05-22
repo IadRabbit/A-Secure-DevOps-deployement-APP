@@ -1,0 +1,4 @@
+k8s_deployments/
+db.sqlite3
+run.sh
+Dockerfile
