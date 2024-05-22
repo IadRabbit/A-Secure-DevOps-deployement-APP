@@ -15,7 +15,10 @@ def upload_2_bucket(content: str, key: UUID):
 
 
 def upload_file_2_bucket(fn: str, key: UUID):
-	s3_client.upload_file(fn, __BUCKET, f'{key}')
+	#s3_client.upload_file(fn, __BUCKET, f'{key}')
+
+	with open(fn, 'rb') as f:
+		upload_2_bucket(f.read(), key)
 
 
 def read_deployment(key: UUID):

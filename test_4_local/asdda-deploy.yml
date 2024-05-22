@@ -13,9 +13,9 @@ spec:
       labels:
         app.kubernetes.io/name: asdda
     spec:
-      serviceAccountName: asdda-deployment-sa
+      serviceAccountName: asdda-sa
       containers:
-      - image: iadrabbit/asdda:0.0.1
+      - image: iadrabbit/asdda:oidc-0.0.1
         imagePullPolicy: Always
         name: asdda
         command: ["/bin/sh"]
